@@ -1,0 +1,42 @@
+﻿{
+   "CodeGenerationMode": 0,
+   "ContextClassName": "AppDbContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": "Data",
+   "OutputPath": "Data\/Models",
+   "ProjectRootNamespace": "DecentralizedFinance",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[dbo].[DeFiProject]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Group]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Token]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "DESKTOP-2SJ9PO4.defiDB",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseNoConstructor": false,
+   "UseNoNavigations": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSpatial": false
+}
