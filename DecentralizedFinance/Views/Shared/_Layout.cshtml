@@ -40,12 +40,34 @@
 
     <footer class="border-top footer text-muted text-center">
         <div class="container">
-            &copy; @*2021 -*@ کلیه حقوق این وب سایت محفوظ و متعلق به شرکت ارز دیجیتال است @*- <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>*@
+            &copy; @*2021 -*@ کلیه حقوق این وب سایت محفوظ و متعلق به شرکت مالی غیرمتمرکز است @*- <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>*@
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        $(document).ready(function () {
+            //$("#myInput").on("keyup", function () {
+            //    var value = $(this).val().toLowerCase();
+            //    $("#tblTokens tr").filter(function () {
+            //        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            //    });
+            //});
+            $(".btnFilterToken").on("click", function () {
+                var value = $(this).text().toLowerCase();
+                if (value != 'همه') {
+                    $("#tblTokens tr").filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                }
+                else {
+                    $("#tblTokens tr").show();
+                }
+
+            });
+        });
+    </script>
 </body>
 </html>

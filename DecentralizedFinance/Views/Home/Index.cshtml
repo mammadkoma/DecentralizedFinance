@@ -1,8 +1,59 @@
-﻿@{
+﻿@model HomeViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    
+    <button type="button" class="btn btn-primary btn-lg btnFilterToken">همه</button>
+    <button type="button" class="btn btn-primary btn-lg btnFilterToken">AAVE</button>
+    <button type="button" class="btn btn-primary btn-lg btnFilterToken">Comp</button>
+    <button type="button" class="btn btn-primary btn-lg btnFilterToken">Curv</button>
 </div>
+
+<br />
+<table class="table text-center table-striped table-hover">
+    <thead class="table-info">
+        <tr>
+            <th>
+                نام
+            </th>
+            <th>
+                قیمت
+            </th>
+            <th>
+                کل مبلغ
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tokens.First().Tvl)
+            </th>
+            <th>
+                گروه
+            </th>
+        </tr>
+    </thead>
+    <tbody id="tblTokens">
+        @foreach (var item in Model.Tokens)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tvl)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GroupName)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
