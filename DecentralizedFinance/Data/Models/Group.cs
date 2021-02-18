@@ -15,8 +15,9 @@ namespace DecentralizedFinance.Data.Models
 
         public int Id { get; set; }
         public string Name { get; set; }
-        public double? Tvl { get; set; }
-        public int? Total { get; set; }
+        public double Tvl { get; set; }
+        public int Total { get; set; }
+        public string PersianName { get; set; }
 
         public virtual ICollection<Token> Token { get; set; }
     }

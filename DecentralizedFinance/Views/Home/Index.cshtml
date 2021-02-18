@@ -1,16 +1,36 @@
 ﻿@model HomeViewModel
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "صفحه نخست";
 }
 
+@* LastProject & Chart *@
+<div class="row text-center">
+
+    <div class="col-md-6">
+        <p class="card justify-content-center" style="height:15%">کل مبلغ نقد : @Model.LastDeFiProject.DefiTotalCash</p>
+        <p class="card justify-content-center" style="height:15%">کل مبلغ قفل : @Model.LastDeFiProject.TotalValueLocked</p>
+        <p class="card justify-content-center" style="height:15%">سلطه ساز : @Model.LastDeFiProject.MakerDominance</p>
+        <p class="card justify-content-center" style="height:15%">شاخص پالس : @Model.LastDeFiProject.DeFiPulseIndex</p>
+        <p class="card justify-content-center" style="height:15%">تاریخ آخرین اطلاعات : @Model.LastDeFiProject.RegisterDate</p>
+    </div>
+    <br />
+    <br />
+    <div class="col-md-6">
+        <canvas id="myChart" width="100" height="100"></canvas>
+    </div>
+</div>
+
+
+@* Tokens *@
+<br />
+<hr />
 <div class="text-center">
     <button type="button" class="btn btn-primary btn-lg btnFilterToken">همه</button>
     <button type="button" class="btn btn-primary btn-lg btnFilterToken">Lending</button>
     <button type="button" class="btn btn-primary btn-lg btnFilterToken">Dexes</button>
     @*<button type="button" class="btn btn-primary btn-lg btnFilterToken">Curv</button>*@
 </div>
-
 <br />
 <table class="table text-center table-striped table-hover">
     <thead class="table-info">

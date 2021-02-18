@@ -1,4 +1,5 @@
-﻿using DecentralizedFinance.Data;
+﻿using DecentralizedFinance.Common.ExtensionMethods;
+using DecentralizedFinance.Data;
 using DecentralizedFinance.ViewModels;
 using Humanizer;
 using Microsoft.AspNetCore.Mvc;
@@ -30,21 +31,33 @@ namespace DecentralizedFinance.Controllers
                 {
                     Id = t.Id,
                     Name = t.Name,
-                    Price = t.Price.ToString(),
+                    Price = ((double)t.Price).ToString("#,0"),//t.Price.ToString(),
                     //FullName = t.FullName,
-                    TotalAmount = t.TotalAmount.ToString(),
+                    TotalAmount = ((double)t.TotalAmount).ToString("#,0"),
                     Tvl = t.Tvl,
                     GroupName = t.Group.Name,
                 })
                 .ToListAsync();
 
-            foreach (var item in tokens)
-            {
-                item.Price = double.Parse(item.Price).ToString("#,0");
-                item.TotalAmount = double.Parse(item.TotalAmount).ToString("#,0");
-            }
 
-            var homeViewModel = new HomeViewModel { Tokens = tokens };
+            var maxProjectId = db.DeFiProject.Max(p => p.Id);
+            var lastProject = await db.DeFiProject
+                .Where(p => p.Id == maxProjectId)
+                .Select(p => new DefiProjectViewModel
+                {
+                    DefiTotalCash = p.DefiTotalCash.ToString("#,0"),
+                    TotalValueLocked = p.TotalValueLocked.ToString("#,0"),
+                    MakerDominance = p.MakerDominance.ToString("#,0"),
+                    DeFiPulseIndex = p.DeFiPulseIndex.ToString("#,0"),
+                    RegisterDate = p.RegisterDate.ToShamsi(),
+                })
+                .FirstOrDefaultAsync();
+
+            var homeViewModel = new HomeViewModel
+            {
+                Tokens = tokens,
+                LastDeFiProject = lastProject,
+            };
 
             return View(homeViewModel);
         }

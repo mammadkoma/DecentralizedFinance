@@ -9,7 +9,10 @@ namespace DecentralizedFinance.Data.Models
     public partial class DeFiProject
     {
         public int Id { get; set; }
-        public double? DefiTotalCash { get; set; }
-        public double? DefiTvl { get; set; }
+        public decimal DefiTotalCash { get; set; }
+        public decimal TotalValueLocked { get; set; }
+        public decimal MakerDominance { get; set; }
+        public decimal DeFiPulseIndex { get; set; }
+        public DateTime RegisterDate { get; set; }
     }
 }

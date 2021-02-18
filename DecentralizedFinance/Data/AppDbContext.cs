@@ -30,18 +30,28 @@ namespace DecentralizedFinance.Data
 
             modelBuilder.Entity<DeFiProject>(entity =>
             {
-                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.DeFiPulseIndex).HasColumnType("decimal(18, 0)");
 
-                entity.Property(e => e.DefiTotalCash).HasColumnName("defiTotalCash");
+                entity.Property(e => e.DefiTotalCash).HasColumnType("decimal(18, 0)");
 
-                entity.Property(e => e.DefiTvl).HasColumnName("defiTVL");
+                entity.Property(e => e.MakerDominance).HasColumnType("decimal(18, 0)");
+
+                entity.Property(e => e.RegisterDate).HasColumnType("datetime");
+
+                entity.Property(e => e.TotalValueLocked).HasColumnType("decimal(18, 0)");
             });
 
             modelBuilder.Entity<Group>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
 
-                entity.Property(e => e.Name).HasMaxLength(250);
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(250);
+
+                entity.Property(e => e.PersianName)
+                    .IsRequired()
+                    .HasMaxLength(250);
 
                 entity.Property(e => e.Tvl).HasColumnName("TVL");
             });
